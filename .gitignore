@@ -1,0 +1,37 @@
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Database connection backup (if any sensitive info)
+# config/database_backup.php
+
+# PHP specific
+composer.phar
+vendor/
+.env
+.env.local
+
+# Node modules (if any)
+node_modules/
+
+# Build files
+build/
+dist/
