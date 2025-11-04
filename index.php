@@ -18,10 +18,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#crud"><i class="fas fa-edit"></i> CRUD Operations</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#constraints"><i class="fas fa-filter"></i> Constraints</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#aggregates"><i class="fas fa-chart-bar"></i> Aggregates</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#subqueries"><i class="fas fa-code-branch"></i> Subqueries</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#joins"><i class="fas fa-link"></i> Joins</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#constraints"><i class="fas fa-search-plus"></i> Query Builder</a></li>
                 </ul>
             </div>
         </div>
@@ -37,7 +34,7 @@
                             <i class="fas fa-database me-3"></i>Security Management Database
                         </h1>
                         <p class="lead text-white mb-0 fs-5">
-                            Comprehensive Database Operations for Security Management System
+                            CRUD Operations & Advanced Query Builder for Security Management
                         </p>
                         <div class="mt-4">
                             <span class="badge bg-light text-dark me-2">MySQL</span>
@@ -111,53 +108,11 @@
         <section id="constraints" class="mb-5">
             <div class="card shadow">
                 <div class="card-header bg-success text-white">
-                    <h3><i class="fas fa-filter"></i> Constraints Operations</h3>
+                    <h3><i class="fas fa-search-plus"></i> Advanced Query Builder</h3>
                 </div>
                 <div class="card-body">
-                    <div class="scrollable-section">
+                    <div>
                         <iframe src="operations/constraints.php" class="operation-frame"></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Aggregate Functions Section -->
-        <section id="aggregates" class="mb-5">
-            <div class="card shadow">
-                <div class="card-header bg-warning text-white">
-                    <h3><i class="fas fa-chart-bar"></i> SELECT Commands & Aggregate Functions</h3>
-                </div>
-                <div class="card-body">
-                    <div class="scrollable-section">
-                        <iframe src="operations/aggregates.php" class="operation-frame"></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Subqueries Section -->
-        <section id="subqueries" class="mb-5">
-            <div class="card shadow">
-                <div class="card-header bg-info text-white">
-                    <h3><i class="fas fa-code-branch"></i> Subqueries, Set Operations & Views</h3>
-                </div>
-                <div class="card-body">
-                    <div class="scrollable-section">
-                        <iframe src="operations/subqueries.php" class="operation-frame"></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Joins Section -->
-        <section id="joins" class="mb-5">
-            <div class="card shadow">
-                <div class="card-header bg-danger text-white">
-                    <h3><i class="fas fa-link"></i> JOIN Operations</h3>
-                </div>
-                <div class="card-body">
-                    <div class="scrollable-section">
-                        <iframe src="operations/joins.php" class="operation-frame"></iframe>
                     </div>
                 </div>
             </div>
@@ -170,5 +125,34 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        // Auto-resize iframes to fit content without scrolling
+        function resizeIframe(iframe) {
+            try {
+                iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + 'px';
+            } catch (e) {
+                console.log('Cannot access iframe content');
+            }
+        }
+
+        // Resize all iframes when they load
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframes = document.querySelectorAll('.operation-frame');
+            iframes.forEach(function(iframe) {
+                iframe.addEventListener('load', function() {
+                    resizeIframe(iframe);
+                    // Re-check size after a short delay to catch dynamic content
+                    setTimeout(() => resizeIframe(iframe), 500);
+                    setTimeout(() => resizeIframe(iframe), 1000);
+                    setTimeout(() => resizeIframe(iframe), 2000);
+                });
+            });
+
+            // Listen for window resize
+            window.addEventListener('resize', function() {
+                iframes.forEach(resizeIframe);
+            });
+        });
+    </script>
 </body>
 </html>
